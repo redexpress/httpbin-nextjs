@@ -78,8 +78,8 @@ jobs:
 
       - name: create text file
         run: |
-          echo "This is a sample report." > reports/sample.txt
-          echo "You can customize this report as needed." >> reports/sample.txt
+          echo "file1:1:This is a sample report" > reports/sample.txt
+          echo "file1:2:You can customize this report as needed." >> reports/sample.txt
 
       - name: Create check run with custom report and annotations
         uses: actions/github-script@v6
