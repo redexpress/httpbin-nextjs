@@ -33,6 +33,13 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      # Add ESLint results as PR comments
+      - name: ESLint Annotations
+        uses: reviewdog/action-eslint@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+        
       # Run TypeScript type checking
       - name: TypeScript Type Check
         run: yarn type-check
@@ -40,13 +47,6 @@ jobs:
       # Run ESLint validation
       - name: ESLint Validation
         run: yarn lint
-
-      # Add ESLint results as PR comments
-      - name: ESLint Annotations
-        uses: reviewdog/action-eslint@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
 
       # Optional: SonarCloud integration (uncomment if needed)
       # - name: SonarCloud Scan
