@@ -8,7 +8,7 @@ export default function handler(
   const { seconds } = req.query
   const delay = parseInt(seconds as string, 10) * 1000
   
-  if (isNaN(delay) {
+  if (isNaN(delay)) {
     return res.status(400).json({ error: 'Invalid delay parameter' })
   }
 
