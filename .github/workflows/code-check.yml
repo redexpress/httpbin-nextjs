@@ -51,8 +51,8 @@ jobs:
       # Run ESLint validation
       - name: ESLint Validation
         run: yarn lint
-        with:
-          report_paths: reports/eslint.html
+        # with:
+        #   report_paths: reports/eslint.html
 
       # Run test
       - name: Run Tests
