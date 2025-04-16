@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:report": "next lint --no-cache --format html > reports/eslint.html",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
