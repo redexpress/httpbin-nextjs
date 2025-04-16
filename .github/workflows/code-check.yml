@@ -56,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: lint-report
-          path: reports/eslint.html
+          path: reports
 
       # Run test
       - name: Run Tests
