@@ -91,7 +91,7 @@ jobs:
             await github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              name: "Custom Lint Report",
+              name: "Code Quality Checks / Custom Report (pull_request)",
               head_sha: context.sha,
               status: "completed",
               conclusion: "success", // or "failure"
