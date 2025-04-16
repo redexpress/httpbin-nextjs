@@ -39,7 +39,7 @@ jobs:
 
       # Run ESLint validation
       - name: ESLint Validation
-        run: false
+        run: yarn lint
 
       # Add ESLint results as PR comments
       - name: ESLint Annotations
