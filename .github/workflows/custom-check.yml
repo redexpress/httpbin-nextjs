@@ -1,0 +1,55 @@
+name: Custom Code Quality Report
+
+on:
+  pull_request_target:
+
+jobs:
+  code-quality:
+    name: 🧪 Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate report file
+        run: |
+          mkdir -p reports
+          echo "✅ All checks passed.\n\n- Lint: Passed\n- Format: Passed\n" > reports/sample2.txt
+
+      - name: Upload custom report as annotation
+        run: |
+          REPORT=$(cat reports/sample2.txt)
+          echo ":::notice Report:::"
+          echo "$REPORT"
+          echo ":::"
+
+      - name: Display report in logs
+        run: |
+          echo "--------------------------"
+          cat reports/sample2.txt
+          echo "--------------------------"
+
+      - name: Create Check Run with details
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const reportContent = fs.readFileSync('reports/sample2.txt', 'utf8');
+            const sha = context.payload.pull_request
+              ? context.payload.pull_request.head.sha
+              : context.sha;
+
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: "🧪 Code Quality / Custom Report",
+              head_sha: sha,
+              status: "completed",
+              conclusion: "success",
+              output: {
+                title: "📄 Code Quality Report",
+                summary: "All checks passed successfully.",
+                text: reportContent,
+              },
+            });

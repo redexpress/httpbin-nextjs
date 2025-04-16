@@ -56,6 +56,7 @@ jobs:
         uses: mikepenz/action-junit-report@v3
         with:
           report_paths: reports/eslint.xml
+          check_name: ESLint Report
 
       # Run test
       - name: Run Tests
@@ -66,6 +67,43 @@ jobs:
         uses: mikepenz/action-junit-report@v3
         with:
           report_paths: reports/junit.xml
+          check_name: Test Report
+
+      # - name: Publish custom report
+      #   uses: EnricoMi/publish-unit-test-result-action@v1
+      #   with:
+      #     files: reports/junit.xml
+      #     check_name: Text Report 2
+      #     fail_on: nothing
+
+      - name: create text file
+        run: |
+          echo "This is a sample report." > reports/sample.txt
+          echo "You can customize this report as needed." >> reports/sample.txt
+
+      - name: Create check run with custom report
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const reportContent = fs.readFileSync('reports/sample.txt', 'utf8');
+            const sha = context.payload.pull_request
+                        ? context.payload.pull_request.head.sha
+                        : context.sha;
+
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: "Code Quality Checks / Custom Report (pull_request)",
+              head_sha: sha,
+              status: "completed",
+              conclusion: "success", // or "failure"
+              output: {
+                title: "Custom Text Report",
+                summary: "Summary of the results.",
+                text: reportContent,
+              },
+            });
 
       # Optional: SonarCloud integration (uncomment if needed)
       # - name: SonarCloud Scan
