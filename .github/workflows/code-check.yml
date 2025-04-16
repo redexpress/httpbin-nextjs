@@ -69,15 +69,38 @@ jobs:
           report_paths: reports/junit.xml
           check_name: Test Report
 
-      - name: custom file
-        run: echo 'hello' > reports/sample.txt
-
       - name: Publish custom report
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
-          files: reports/sample.txt
-          check_name: Text Report
+          files: reports/junit.xml
+          check_name: Text Report 2
           fail_on: nothing
+
+      - name: create text file
+        run: |
+          echo "This is a sample report." > reports/sample.txt
+          echo "You can customize this report as needed." >> reports/sample.txt
+
+      - name: Create check run with custom report
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const reportContent = fs.readFileSync('reports/sample.txt', 'utf8');
+
+            await github.rest.checks.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: "Custom Lint Report",
+              head_sha: context.sha,
+              status: "completed",
+              conclusion: "success", // or "failure"
+              output: {
+                title: "Custom Text Report",
+                summary: "Summary of the results.",
+                text: reportContent,
+              },
+            });
 
       # Optional: SonarCloud integration (uncomment if needed)
       # - name: SonarCloud Scan
