@@ -43,7 +43,7 @@ jobs:
 
       # Add ESLint results as PR comments
       - name: ESLint Annotations
-        uses: reviewdog/action-eslint@v2
+        uses: reviewdog/action-eslint@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
