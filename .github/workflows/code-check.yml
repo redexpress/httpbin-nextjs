@@ -77,7 +77,7 @@ jobs:
         with:
           files: reports/sample.txt
           check_name: Text Report
-          fail_on: nothing
+          # fail_on: nothing
 
       # Optional: SonarCloud integration (uncomment if needed)
       # - name: SonarCloud Scan
