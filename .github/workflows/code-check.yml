@@ -51,8 +51,12 @@ jobs:
       # Run ESLint validation
       - name: ESLint Validation
         run: yarn lint
-        # with:
-        #   report_paths: reports/eslint.html
+
+      - name: Upload lint report
+        uses: actions/upload-artifact@v3
+        with:
+          name: lint-report
+          path: reports/eslint.html
 
       # Run test
       - name: Run Tests
