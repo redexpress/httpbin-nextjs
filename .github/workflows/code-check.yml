@@ -79,7 +79,7 @@ jobs:
           check_name: Text Report
           title: Report
           summary: Text Report Summary
-          fail_on: never
+          fail_on: nothing
 
       # Optional: SonarCloud integration (uncomment if needed)
       # - name: SonarCloud Scan
