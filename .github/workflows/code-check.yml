@@ -69,12 +69,12 @@ jobs:
           report_paths: reports/junit.xml
           check_name: Test Report
 
-      - name: Publish custom report
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        with:
-          files: reports/junit.xml
-          check_name: Text Report 2
-          fail_on: nothing
+      # - name: Publish custom report
+      #   uses: EnricoMi/publish-unit-test-result-action@v1
+      #   with:
+      #     files: reports/junit.xml
+      #     check_name: Text Report 2
+      #     fail_on: nothing
 
       - name: create text file
         run: |
