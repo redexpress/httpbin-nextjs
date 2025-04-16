@@ -4,6 +4,10 @@ on:
   pull_request:
     branches: [main, dev]
 
+permissions:
+  checks: write
+  contents: read
+
 jobs:
   quality-checks:
     runs-on: ubuntu-22.04
