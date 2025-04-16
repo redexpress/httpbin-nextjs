@@ -48,6 +48,16 @@ jobs:
       - name: ESLint Validation
         run: yarn lint
 
+      # Run test
+      - name: Run Tests
+        run: yarn jest
+
+      # publish report
+      - name: Publish test report
+        uses: mikepenz/action-junit-report@v3
+        with:
+          report_paths: reports/junit.xml
+
       # Optional: SonarCloud integration (uncomment if needed)
       # - name: SonarCloud Scan
       #   uses: sonarsource/sonarcloud-github-action@master
