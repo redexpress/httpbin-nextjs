@@ -50,7 +50,7 @@ jobs:
 
       # Run ESLint validation
       - name: ESLint Validation
-        run: yarn lint
+        run: yarn lint:report
 
       - name: Upload lint report
         uses: actions/upload-artifact@main
