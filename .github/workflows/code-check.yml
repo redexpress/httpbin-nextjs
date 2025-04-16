@@ -69,6 +69,17 @@ jobs:
           report_paths: reports/junit.xml
           check_name: Test Report
 
+      - name: custom file
+        run: touch reports/sample.txt
+
+      - name: Publish custom report
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          files: reports/sample.txt
+          check_name: Text Report
+          title: Report
+          summary: Text Report Summary
+
       # Optional: SonarCloud integration (uncomment if needed)
       # - name: SonarCloud Scan
       #   uses: sonarsource/sonarcloud-github-action@master
