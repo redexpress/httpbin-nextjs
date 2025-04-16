@@ -12,7 +12,18 @@ export default {
     '^.+\\.ts$': ['ts-jest', { useESM: true }],
   },
   reporters: [
-    'default', // Default console output
-    ['jest-junit', { outputDirectory: 'reports', outputName: 'junit.xml' }] // Generate JUnit report
+    'default',
+    [
+      'jest-junit',
+      {
+        outputDirectory: 'reports',
+        outputName: 'junit.xml',
+        suiteName: 'Jest Tests',
+        classNameTemplate: '{classname} - {title}',
+        titleTemplate: '{title}',
+        ancestorSeparator: ' > ',
+        includeConsoleOutput: true,
+      },
+    ],
   ],
 }
