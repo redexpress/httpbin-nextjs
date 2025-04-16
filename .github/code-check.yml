@@ -1,0 +1,56 @@
+name: Code Quality Checks
+
+on:
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-22.04
+
+    steps:
+      # Checkout repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Setup Node.js environment with Yarn
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn' # Enable Yarn caching
+
+      # Cache dependencies to speed up workflows
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            .yarn/cache
+            .next/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+
+      # Install project dependencies
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # Run TypeScript type checking
+      - name: TypeScript Type Check
+        run: yarn type-check
+
+      # Run ESLint validation
+      - name: ESLint Validation
+        run: yarn lint
+
+      # Add ESLint results as PR comments
+      - name: ESLint Annotations
+        uses: reviewdog/action-eslint@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+
+      # Optional: SonarCloud integration (uncomment if needed)
+      # - name: SonarCloud Scan
+      #   uses: sonarsource/sonarcloud-github-action@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
