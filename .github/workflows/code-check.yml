@@ -56,7 +56,8 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: lint-report
-          path: reports
+          path: reports/
+          report_paths: reports/
 
       # Run test
       - name: Run Tests
