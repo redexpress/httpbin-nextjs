@@ -78,46 +78,27 @@ jobs:
 
       - name: create text file
         run: |
-          echo "file1:1:This is a sample report" > reports/sample.txt
-          echo "file1:2:You can customize this report as needed." >> reports/sample.txt
+          echo "This is a sample report." > reports/sample.txt
+          echo "You can customize this report as needed." >> reports/sample.txt
 
-      - name: Create check run with custom report and annotations
+      - name: Create check run with custom report
         uses: actions/github-script@v6
         with:
           script: |
-            const fs = require('fs');
-            const path = require('path');
+            # const fs = require('fs');
+            # const reportContent = fs.readFileSync('reports/sample.txt', 'utf8');
 
-            // Read the custom report file content
-            const reportContent = fs.readFileSync('reports/sample.txt', 'utf8');
-
-            // Parse the report content into annotations (assuming each line represents an error or warning)
-            const lines = reportContent.split('\n').map(line => line.trim()).filter(line => line.length > 0);
-            const annotations = lines.map((line, index) => {
-              // Assume each line format is "file_path:line_number:message"
-              const [filePath, lineNumber, message] = line.split(':');
-              return {
-                path: filePath,
-                start_line: parseInt(lineNumber),
-                end_line: parseInt(lineNumber),
-                annotation_level: "warning", // Use "failure" if needed
-                message: message,
-              };
-            });
-
-            // Create a check run with GitHub Checks API
             await github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              name: "Custom Lint Report",
-              head_sha: context.sha,
+              name: "Code Quality Checks / Custom Report (pull_request)",
+              head_sha: context.payload.pull_request?.head.sha || context.sha,
               status: "completed",
-              conclusion: "success", // Adjust to "failure" if needed
+              conclusion: "success", // or "failure"
               output: {
-                title: "Custom Lint Report",
-                summary: "Summary of the lint results.",
-                text: "### Detailed Report\n\n```\n" + reportContent + "\n```",
-                annotations: annotations, // Add detailed line-by-line annotations
+                title: "Custom Text Report",
+                summary: "Summary of the results.",
+                text: "NOTE\nDetailed report content:\nthis is a sample report.\nYou can customize this report as needed.",
               },
             });
 
