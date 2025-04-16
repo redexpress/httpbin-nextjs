@@ -92,7 +92,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               name: "Code Quality Checks / Custom Report (pull_request)",
-              head_sha: context.payload.pull_request?.head.sha || context.sha,
+              head_sha: context.sha,
               status: "completed",
               conclusion: "success", // or "failure"
               output: {
