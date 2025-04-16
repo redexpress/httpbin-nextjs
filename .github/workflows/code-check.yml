@@ -87,12 +87,15 @@ jobs:
           script: |
             const fs = require('fs');
             const reportContent = fs.readFileSync('reports/sample.txt', 'utf8');
+            const sha = context.payload.pull_request
+                        ? context.payload.pull_request.head.sha
+                        : context.sha;
 
             await github.rest.checks.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               name: "Code Quality Checks / Custom Report (pull_request)",
-              head_sha: context.payload.pull_request.head.sha,
+              head_sha: sha,
               status: "completed",
               conclusion: "success", // or "failure"
               output: {
