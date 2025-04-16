@@ -52,11 +52,10 @@ jobs:
       - name: ESLint Validation
         run: yarn lint:report
 
-      - name: Upload lint report
-        uses: actions/upload-artifact@main
+      - name: Publish lint report
+        uses: mikepenz/action-junit-report@v3
         with:
-          name: lint-report
-          path: reports/eslint.html
+          report_paths: reports/eslint.xml
 
       # Run test
       - name: Run Tests

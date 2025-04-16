@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="2" failures="0" errors="0" time="0.722">
-  <testsuite name="GET /api/get" errors="0" failures="0" skipped="0" timestamp="2025-04-16T07:33:03" time="0.415" tests="2">
-    <testcase classname="GET /api/get should return query parameters, headers, origin, and URL" name="GET /api/get should return query parameters, headers, origin, and URL" time="0.005">
-    </testcase>
-    <testcase classname="GET /api/get should return 405 Method Not Allowed for non-GET requests" name="GET /api/get should return 405 Method Not Allowed for non-GET requests" time="0">
-    </testcase>
-  </testsuite>
-</testsuites>
