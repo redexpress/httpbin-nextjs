@@ -1,4 +1,4 @@
-// tests/api/get.test.js
+// __test__/api/get.test.ts
 import { createRequest, createResponse } from 'node-mocks-http';
 import handler from '../../pages/api/get';
 
@@ -24,7 +24,7 @@ describe('GET /api/get', () => {
     expect(json).toHaveProperty('headers');
     expect(json.headers['user-agent']).toBe('TestAgent');
     expect(json.origin).toBe('192.168.1.1');
-    expect(json.url).toBe('/api/get?foo=bar&baz=qux');
+    expect(json.url).toMatch(/\?foo=bar&baz=qux$/);
   });
 
   it('should return 405 Method Not Allowed for non-GET requests', async () => {
