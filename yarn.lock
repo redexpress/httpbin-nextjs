@@ -295,6 +295,14 @@
   dependencies:
     tslib "^2.4.0"
 
+"@envelop/instrumentation@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/@envelop/instrumentation/-/instrumentation-1.0.0.tgz#43268392e065d8ba975cacbdf4fc297dfe3e11e5"
+  integrity sha512-cxgkB66RQB95H3X27jlnxCRNTmPuSTgmBAq6/4n2Dtv4hsk4yz8FadA1ggmd0uZzvKqWD6CR+WFgTjhDqg7eyw==
+  dependencies:
+    "@whatwg-node/promise-helpers" "^1.2.1"
+    tslib "^2.5.0"
+
 "@eslint-community/eslint-utils@^4.2.0", "@eslint-community/eslint-utils@^4.4.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.6.0.tgz#bfe67b3d334a8579a35e48fe240dc0638d1bcd91"
@@ -367,6 +375,11 @@
   dependencies:
     "@eslint/core" "^0.13.0"
     levn "^0.4.1"
+
+"@fastify/busboy@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.npmmirror.com/@fastify/busboy/-/busboy-3.1.1.tgz#af3aea7f1e52ec916d8b5c9dcc0f09d4c060a3fc"
+  integrity sha512-5DGmA8FTdB2XbDeEwc/5ZXBl6UbBAyBOOLlPuBnZ/N1SwdH9Ii+cOX3tBROlDgcTXxjOYnLMVoKk9+FXAw0CJw==
 
 "@humanfs/core@^0.19.1":
   version "0.19.1"
@@ -1210,6 +1223,50 @@
   resolved "https://registry.yarnpkg.com/@unrs/resolver-binding-win32-x64-msvc/-/resolver-binding-win32-x64-msvc-1.5.0.tgz#5768c6bba4a27833a48a8a77e50eb01b520d0962"
   integrity sha512-wAvXp4k7jhioi4SebXW/yfzzYwsUCr9kIX4gCsUFKpCTUf8Mi7vScJXI3S+kupSUf0LbVHudR8qBbe2wFMSNUw==
 
+"@whatwg-node/disposablestack@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.npmmirror.com/@whatwg-node/disposablestack/-/disposablestack-0.0.6.tgz#2064a1425ea66194def6df0c7a1851b6939c82bb"
+  integrity sha512-LOtTn+JgJvX8WfBVJtF08TGrdjuFzGJc4mkP8EdDI8ADbvO7kiexYep1o8dwnt0okb0jYclCDXF13xU7Ge4zSw==
+  dependencies:
+    "@whatwg-node/promise-helpers" "^1.0.0"
+    tslib "^2.6.3"
+
+"@whatwg-node/fetch@^0.10.6":
+  version "0.10.6"
+  resolved "https://registry.npmmirror.com/@whatwg-node/fetch/-/fetch-0.10.6.tgz#ce2fc35e45558874ad2488160fc8102481c935e4"
+  integrity sha512-6uzhO2aQ757p3bSHcemA8C4pqEXuyBqyGAM7cYpO0c6/igRMV9As9XL0W12h5EPYMclgr7FgjmbVQBoWEdJ/yA==
+  dependencies:
+    "@whatwg-node/node-fetch" "^0.7.18"
+    urlpattern-polyfill "^10.0.0"
+
+"@whatwg-node/node-fetch@^0.7.18":
+  version "0.7.18"
+  resolved "https://registry.npmmirror.com/@whatwg-node/node-fetch/-/node-fetch-0.7.18.tgz#19e008468734bd89857f7001f29d38037cdc0cc7"
+  integrity sha512-IxKdVWfZYasGiyxBcsROxq6FmDQu3MNNiOYJ/yqLKhe+Qq27IIWsK7ItbjS2M9L5aM5JxjWkIS7JDh7wnsn+CQ==
+  dependencies:
+    "@fastify/busboy" "^3.1.1"
+    "@whatwg-node/disposablestack" "^0.0.6"
+    "@whatwg-node/promise-helpers" "^1.3.1"
+    tslib "^2.6.3"
+
+"@whatwg-node/promise-helpers@^1.0.0", "@whatwg-node/promise-helpers@^1.2.1", "@whatwg-node/promise-helpers@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.npmmirror.com/@whatwg-node/promise-helpers/-/promise-helpers-1.3.1.tgz#65f1820fa652ddc1062aa0fe7456726e8676ea43"
+  integrity sha512-D+OwTEunoQhVHVToD80dPhfz9xgPLqJyEA3F5jCRM14A2u8tBBQVdZekqfqx6ZAfZ+POT4Hb0dn601UKMsvADw==
+  dependencies:
+    tslib "^2.6.3"
+
+"@whatwg-node/server@^0.10.3":
+  version "0.10.5"
+  resolved "https://registry.npmmirror.com/@whatwg-node/server/-/server-0.10.5.tgz#a02f459fe4f7a148c1ef735dc495b08ce0270ebf"
+  integrity sha512-ydxzH1iox9AzLe+uaX9jjyVFkQO+h15j+JClropw0P4Vz+ES4+xTZVu5leUsWW8AYTVZBFkiC0iHl/PwFZ+Q1Q==
+  dependencies:
+    "@envelop/instrumentation" "^1.0.0"
+    "@whatwg-node/disposablestack" "^0.0.6"
+    "@whatwg-node/fetch" "^0.10.6"
+    "@whatwg-node/promise-helpers" "^1.3.1"
+    tslib "^2.6.3"
+
 accepts@^1.3.7:
   version "1.3.8"
   resolved "https://registry.npmmirror.com/accepts/-/accepts-1.3.8.tgz#0bf0be125b67014adcb0b0921e62db7bffe16b2e"
@@ -1694,10 +1751,20 @@ convert-source-map@^2.0.0:
   resolved "https://registry.npmmirror.com/convert-source-map/-/convert-source-map-2.0.0.tgz#4b560f649fc4e918dd0ab75cf4961e8bc882d82a"
   integrity sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==
 
+cookie@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmmirror.com/cookie/-/cookie-1.0.2.tgz#27360701532116bd3f1f9416929d176afe1e4610"
+  integrity sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==
+
 cookiejar@^2.1.4:
   version "2.1.4"
   resolved "https://registry.npmmirror.com/cookiejar/-/cookiejar-2.1.4.tgz#ee669c1fea2cf42dc31585469d193fef0d65771b"
   integrity sha512-LDx6oHrK+PhzLKJU9j5S7/Y3jM/mUHvD/DeI1WQmJn652iPC5Y4TBzC9l+5OMOXlyTTA+SmVUPm0HQUwpD5Jqw==
+
+core-js@^3.41.0:
+  version "3.41.0"
+  resolved "https://registry.npmmirror.com/core-js/-/core-js-3.41.0.tgz#57714dafb8c751a6095d028a7428f1fb5834a776"
+  integrity sha512-SJ4/EHwS36QMJd6h/Rg+GyR4A5xE0FSI3eZ+iBVpfqf1x0eTSg1smWLHrA+2jQThZSh97fmSgFSU8B61nxosxA==
 
 create-jest@^29.7.0:
   version "29.7.0"
@@ -3639,6 +3706,15 @@ negotiator@0.6.3:
   resolved "https://registry.npmmirror.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
+next-test-api-route-handler@^4.0.16:
+  version "4.0.16"
+  resolved "https://registry.npmmirror.com/next-test-api-route-handler/-/next-test-api-route-handler-4.0.16.tgz#7ac09101fe831669eb2abc5d37c8f4ee64d44828"
+  integrity sha512-13YKH1X52YzZKDU1fplR3DS6SRZUx+wsw6x6XZXGJnjUWEPL9HmVdyX9/i/8Rv4kC2UXisqLPuTGePTvWRAZGQ==
+  dependencies:
+    "@whatwg-node/server" "^0.10.3"
+    cookie "^1.0.2"
+    core-js "^3.41.0"
+
 next@15.3.0:
   version "15.3.0"
   resolved "https://registry.yarnpkg.com/next/-/next-15.3.0.tgz#f8aa64ab584664db75648bd87d5d68c02eb2d56f"
@@ -4549,7 +4625,7 @@ tsconfig-paths@^3.15.0:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@^2.4.0, tslib@^2.8.0, tslib@^2.8.1:
+tslib@^2.4.0, tslib@^2.5.0, tslib@^2.6.3, tslib@^2.8.0, tslib@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
@@ -4690,6 +4766,11 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+urlpattern-polyfill@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.npmmirror.com/urlpattern-polyfill/-/urlpattern-polyfill-10.0.0.tgz#f0a03a97bfb03cdf33553e5e79a2aadd22cac8ec"
+  integrity sha512-H/A06tKD7sS1O1X2SshBVeA5FLycRpjqiBeqGKmBwBDBy28EnRjORxTNe269KSSr5un5qyWi1iL61wLxpd+ZOg==
 
 uuid@^8.3.2:
   version "8.3.2"

@@ -1,4 +1,4 @@
-// tests/api/get.test.js
+// __test__/api/get.test.ts
 import { createRequest, createResponse } from 'node-mocks-http';
 import handler from '../../pages/api/get';
 

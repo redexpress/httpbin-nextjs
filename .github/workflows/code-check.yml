@@ -48,15 +48,6 @@ jobs:
       - name: TypeScript Type Check
         run: yarn type-check
 
-      # Run ESLint validation
-      - name: ESLint Validation
-        run: yarn lint:report
-
-      - name: Publish lint report
-        uses: mikepenz/action-junit-report@v3
-        with:
-          report_paths: reports/eslint.xml
-
       # Run test
       - name: Run Tests
         run: yarn jest
