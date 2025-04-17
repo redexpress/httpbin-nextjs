@@ -1,12 +1,15 @@
 @host1 = http://localhost:3000/api
 @host2 = http://httpbin.org
 
-@host = {{host2}}
+@host = {{host1}}
 ### get
 GET {{host}}/get
 
 ### status
 GET {{host}}/status/999
+
+### status
+POST {{host}}/status/200
 
 ### post json
 POST {{host}}/post
@@ -22,3 +25,5 @@ Content-Type: application/x-www-form-urlencoded
 
 field1=val1&field2=val2
 
+### post form
+GET {{host}}/post?name=yang
