@@ -36,7 +36,7 @@ export default async function handler(
   const rawIp = ip.split(',')[0].trim();
   const ipv4 = rawIp.replace(/^::ffff:/, '').replace(/^::1$/, '127.0.0.1');
 
-  const protocol = (req.headers['x-forwarded-proto'] || (req.connection.encrypted ? 'https' : 'http')) as string;
+  const protocol = req.headers['x-forwarded-proto'] || 'http';
   const host = req.headers['host'] as string;
   const fullUrl = `${protocol}://${host}${req.url}`;
 

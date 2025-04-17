@@ -11,7 +11,7 @@ export default function handler(
 
   const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '') as string;
   const ipv4 = ip.replace(/^::ffff:/, '').replace(/^::1$/, '127.0.0.1');
-  const protocol = (req.headers['x-forwarded-proto'] || (req.connection.encrypted ? 'https' : 'http')) as string;
+  const protocol = req.headers['x-forwarded-proto'] || 'http';
   const host = req.headers['host'] as string;
   const fullUrl = `${protocol}://${host}${req.url}`;
 
