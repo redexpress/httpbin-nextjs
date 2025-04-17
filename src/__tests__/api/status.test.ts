@@ -1,4 +1,3 @@
-// __test__/api/status.test.ts
 import { createRequest, createResponse } from 'node-mocks-http';
 import handler from '../../pages/api/status/[code]';
 import type { NextApiRequest, NextApiResponse } from 'next';
