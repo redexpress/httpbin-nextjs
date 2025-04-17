@@ -1,7 +1,7 @@
 export default {
   testEnvironment: 'node',
-  testMatch: ['**/__tests__/api/get.test.ts'],
-  collectCoverageFrom: ['src/pages/api/*.ts'],
+  testMatch: ['**/__tests__/api/*.test.ts'],
+  collectCoverageFrom: ['src/pages/api/*.test.ts'],
   coverageThreshold: {
     global: {
       lines: 0,
